@@ -1,0 +1,23 @@
+zero
+y
+sp 30
+
+edit ex4gaurded
+speed 30 always
+speed 100 mmps always
+set location1 = here
+set arrival = shift(current.loc by 0,0,100)
+for  i=0 to 5
+moves arrival
+timer 3 = 0
+wait timer (3)>1
+break
+set loc2 = here
+dist= distance (location1,loc2)
+t=timer (3)
+speed1= dist/t
+end
+type "total speed = ", totalspeed
+e
+
+

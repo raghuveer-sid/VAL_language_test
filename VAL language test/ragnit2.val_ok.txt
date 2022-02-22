@@ -1,0 +1,43 @@
+zero
+y
+sp 30
+
+edit ex2gluegun
+tool pen
+detector.empty=1009
+detector.end=1010
+reacti detector.empty,recharge
+appro board:a,50
+moves board:a
+closei
+moves board:b
+moves board:c
+moves board:d
+moves board:a
+openi
+departs 50
+set board=board:shift(null by 10,10,0)
+move wait.loc
+e
+
+edit recharge
+detector.empty=1009
+detector.end=1010
+set current.loc=here
+set arrival=dest
+openi
+departs 50
+appro recharge,50
+moves recharge
+wait sig(detector.end)
+departs 50
+appro current.loc , 50
+moves current.loc
+closei
+moves arrival
+return
+e
+
+load glue.lc
+load alltools.v2
+

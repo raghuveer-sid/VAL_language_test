@@ -1,0 +1,26 @@
+Exercise 3
+
+edit ex3pickplace
+tool gripper
+set origin = frame(A,x,xy,A)
+set output = 5
+set drop = D
+openi
+for i = 0 to 2
+for j = 0 to 1
+set pallet = shift(null by i*82,j*59,0)
+appro origin:pallet,50
+moves origin:pallet
+closei
+departs 50
+set place = shift(drop by 0,0,15)
+appro place,50
+moves place
+openi
+departs 50
+end
+end
+move wait.loc
+e
+load ragnit.lc
+load alltools.v2

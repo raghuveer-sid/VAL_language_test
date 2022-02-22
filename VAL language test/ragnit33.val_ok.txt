@@ -1,0 +1,29 @@
+zero
+y
+sp 30
+
+edit ex3pallet
+tool gripper
+air.pressure=5
+set pallet = frame(a,x,xy,a)
+openi
+for i=0 to 2
+for j=0 to 1
+set object=shift(null by i*82,j*59,0)
+appro pallet:object,50
+moves pallet:object
+closei
+departs 50
+set drop =shift(drop by 0,0,15)
+appro drop , 50
+moves drop
+openi
+departs 50
+end
+end
+move wait.loc
+e
+
+load ragnit.lc
+load alltools.v2
+

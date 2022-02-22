@@ -1,0 +1,62 @@
+zero
+y
+sp 30
+
+edit my.program
+tool succion.pad
+speed 30 always
+speed 100 mmps always
+part.in.p2 = 1005
+part.in.p1 = 1004
+detector1 = 1008
+detector2 = 1007
+conveyor.stop = -1
+conveyor.start = 1
+to.the.right = 2
+to.the.left = -2
+air.pressure=5
+sig(air.pressure)
+wait sig(part.in.p2)or sig(part.in.p1)
+if sig(part.in.p2)then
+set grasp.loc = p2
+else
+set grasp.loc = p1
+end
+appro grasp.loc,50
+moves grasp.loc
+closei
+departs 50
+appro place,50
+move place
+openi
+departs 50
+signal(to.the.right)
+signal(conveyor.start)
+wait sig(detector1)
+timer 3 = 0
+wait timer (3)>3
+signal(conveyor.stop)
+timer 3 = 0
+wait timer (3)>1
+signal(to.the.left)
+signal(conveyor.start)
+wait sig(detector1)
+timer 4 = 0
+wait timer (4)>1
+appro grasp.loc.stopped,150
+set b = shift(grasp.loc.stopped by 0,150,0)
+wait sig(detector2)
+t = timer (4)
+speed (700/t)*sqrt(2) mmps
+moves b
+closei
+departs 150
+appro p3,50
+moves p3
+openi
+departs 50
+e
+
+load pickconv.lc
+load alltools.v2
+
